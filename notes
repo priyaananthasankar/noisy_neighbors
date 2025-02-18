@@ -10,7 +10,6 @@ kubectl get pods -n kube-system -l k8s-app=kube-proxy
 https://medium.com/@amroessameldin/kube-proxy-what-is-it-and-how-it-works-6def85d9bc8f
 
 sudo iptables -t nat -A KUBE-SVC-XXXXXX -p tcp --dport 80 -j DROP
-sudo iptables -t nat -A KUBE-SEP-PM6ZTUFL3OPB3TNU -p tcp --dport 80 -j DROP
 
 # toggle between the below in minikube
 sudo iptables -A KUBE-SERVICES  -p tcp --dport 80 -j DROP
