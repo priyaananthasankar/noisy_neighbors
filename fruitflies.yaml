@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fruitflies-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fruitflies
+  template:
+    metadata:
+      labels:
+        app: fruitflies
+    spec:
+      containers:
+      - name: fruitflies
+        image: fruitflies:v11
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        env:
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              name: fruitflies-config
+              key: PORT
+        command: ["python"]
+        args: ["fruitflies.py", "--port", "$(PORT)"]
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fruitflies-service
+spec:
+  selector:
+    app: fruitflies
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
+
+---
+# Deployment for the ff_client
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ff-client-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ff-client
+  template:
+    metadata:
+      labels:
+        app: ff-client
+    spec:
+      containers:
+      - name: ff-client
+        image: ff-client:latest
+        imagePullPolicy: IfNotPresent
+        command: ["python"]
+        args: ["ff_client.py"]

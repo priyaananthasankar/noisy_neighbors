@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-port-80
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app: fruitflies
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: fruitflies
+    ports:
+    - protocol: TCP
+      port: 80

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: drop-port-80
+spec:
+  hostNetwork: true
+  containers:
+  - name: drop-port-80
+    image: drop-port-80:latest
+    imagePullPolicy: IfNotPresent
+    securityContext:
+      privileged: true

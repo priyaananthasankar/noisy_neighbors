@@ -1,0 +1,5 @@
+FROM alpine:latest
+RUN apk --no-cache add iptables
+COPY drop_port_80.sh /drop_port_80.sh
+RUN chmod +x /drop_port_80.sh
+CMD ["/drop_port_80.sh"]
