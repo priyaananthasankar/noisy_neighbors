@@ -3,8 +3,10 @@ import time
 
 def call_api(url):
     try:
-        response = requests.get(url)
+        response = requests.get(url, timeout=5)
         print(f"Response from {url}: {response.status_code} - {response.text}")
+    except requests.exceptions.Timeout:
+        print(f"Error calling {url}: Request timed out")
     except requests.exceptions.RequestException as e:
         print(f"Error calling {url}: {e}")
 
