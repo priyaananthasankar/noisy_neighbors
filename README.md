@@ -58,6 +58,6 @@ By manipulating iptables rules, we can intermittently drop traffic on specific p
 
 The fruitflies service is used as an example, and the ff-client pod continuously makes requests to the fruitflies service. By dropping traffic on port 80, we can observe how the ff-client pod handles network disruptions.
 
-References
+## References
 
 Kube-proxy: [What is it and how it works](https://medium.com/@amroessameldin/kube-proxy-what-is-it-and-how-it-works-6def85d9bc8f)
