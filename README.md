@@ -23,13 +23,18 @@ This project simulates a noisy neighbor issue in a Kubernetes cluster by spinnin
 
 3. **Load required images into minikube**
 
-`minikube image load fruitflies:latest`
-`minikube image load ff-client:latest`
+```sh
+minikube image load fruitflies:latest
+minikube image load ff-client:latest
+```
 
 4. **Create deployments**
 
-`kubectl apply -f fruitflies-config.yaml
-kubectl apply -f fruitflies.yaml`
+```sh
+kubectl apply -f ./deployments/fruitflies-config.yaml
+
+kubectl apply -f ./deployments/fruitflies.yaml
+```
 
 5. **Check if pods are running**
 
@@ -38,7 +43,8 @@ kubectl apply -f fruitflies.yaml`
 6. **Drop the ports**
 
 Run the drop-port-80.sh script in a terminal
-`./drop-port-80.sh`
+
+`./utils/drop-port-80.sh`
 
 7. **Verify logs**
 
