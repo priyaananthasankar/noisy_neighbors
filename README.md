@@ -4,9 +4,11 @@ This project simulates a noisy neighbor issue in a Kubernetes cluster by spinnin
 
 ## Prerequisites:
 
-1. [Minikube](https://minikube.sigs.k8s.io/docs/)
+1. Install and setup [Minikube](https://minikube.sigs.k8s.io/docs/)
 2. Build docker images, for server and client
+
 `docker build -t fruitflies:latest -f <path to>Dockerfile> .`
+
 `docker build -t ff-client:latest -f <path to ff_client_dockerfile>`
 
 ## Steps to Simulate Noisy Neighbor Issue
@@ -19,7 +21,7 @@ This project simulates a noisy neighbor issue in a Kubernetes cluster by spinnin
 
 `kubectl delete daemonset kube-proxy -n kube-system`
 
-3. **Load required Minikube images**
+3. **Load required images into minikube**
 
 `minikube image load fruitflies:latest`
 `minikube image load ff-client:latest`
