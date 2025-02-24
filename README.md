@@ -9,7 +9,7 @@ This project simulates a noisy neighbor issue in a Kubernetes cluster by spinnin
 
 `docker build -t fruitflies:latest -f <path to Dockerfile> .`
 
-`docker build -t ff-client:latest -f <path to ff_client_dockerfile>`
+`docker build -t ff-client:latest -f <path to ff_client_dockerfile> .`
 
 ## Steps to Simulate Noisy Neighbor Issue
 
