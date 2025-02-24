@@ -1,4 +1,4 @@
-# filepath: /Users/prananth/Projects/noisy_neighbor/Dockerfile
+# filepath: /Users/prananth/Projects/noisy_neighbors/dockerfiles/ff_client_dockerfile
 FROM python:3.9-slim
 
 # Set the working directory in the container
@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . /app
 
 # Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r app/requirements.txt
 
 # Run ff_client.py when the container launches
-CMD ["python", "ff_client.py"]
+CMD ["python", "client/ff_client.py"]
