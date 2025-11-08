@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: fruitflies
-        image: fruitflies:v11
+        image: fruitflies:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
@@ -25,7 +25,7 @@ spec:
               name: fruitflies-config
               key: PORT
         command: ["python"]
-        args: ["fruitflies.py", "--port", "$(PORT)"]
+        args: ["app/server/fruitflies.py", "--port", "$(PORT)"]
 
 ---
 apiVersion: v1
@@ -62,4 +62,4 @@ spec:
         image: ff-client:latest
         imagePullPolicy: IfNotPresent
         command: ["python"]
-        args: ["ff_client.py"]
+        args: ["app/client/ff_client.py"]
